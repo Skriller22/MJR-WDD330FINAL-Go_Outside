@@ -344,6 +344,23 @@ _Pvt_Extensions
 **/.paket/paket.exe
 paket-files/
 
+# Node.js and npm
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+.eslintcache
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Vite
+dist/
+.vite/
+.DS_Store
+
 # FAKE - F# Make
 **/.fake/
 

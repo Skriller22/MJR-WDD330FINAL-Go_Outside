@@ -1,0 +1,1 @@
+// LocalInsights component

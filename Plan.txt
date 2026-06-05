@@ -1,0 +1,126 @@
+WDD 330 Project Proposal: 
+“Go Outside”
+Overview:
+The objective of this project is to help myself and others have reminders about the things to enjoy outside in their area. To make the outdoors seem more inviting and alive. I have observed that our highly technical and entertainment-centric society can find the outdoors unimportant or disconnected from their daily lives and I think that seeing the bigger picture will help bring that disconnect into perspective. The plan for the app is to show real-time data on the natural events in the user’s area.
+Target Audience
+Families are going to be the primary audience but also anyone who has an interest in the natural world. It could be beneficial to also target those with industrial or high-stress work environments. I feel that this serves humanity in general but especially those that need more connection in their lives, and not the internet kind.
+Major Functions
+1.	Track bird, butterfly/bug, land animal, oceanic migration events
+a.	Using real-time data in the US
+2.	Track regional weather events for the week as well as last year’s data
+a.	Help users determine if they are comfortable with the weather and plan for rain or sun
+b.	Track pollution and air quality
+c.	Track pollen count
+3.	Track stargazing events
+a.	Compare to cloud coverage
+4.	Calendar to show predicted migration events
+a.	Probably going to have to use a combination of historical information and future predictions if possible.
+5.	Region based planning tools
+a.	“The Adventure Planner”
+b.	Offer a simple planner tool that offers suggestions for packing items based on weather and regional data.
+c.	Offer local resources (maps, regional news, popular locations, etc…) that can also be printed.
+6.	Downloadable or printable content
+a.	The user shouldn’t have to make a user account to have access to this information. There will be easy access to printable content so that the user doesn’t have to use an electronic device while on their adventure.
+7.	Responsive and accessible design
+a.	Provide an experience suitable for all ages and backgrounds.
+8.	Interactive CSS
+a.	The website should feel alive and engaging to help involve children in the planning process.
+Wireframes
+External Data
+Wildlife & Migration Data
+•	eBird API, Real time bird sightings, migration patterns, hotspots.
+•	iNaturalist API, Wildlife observations (insects, mammals, plants).
+•	BirdCast, Migration forecasts, live migration maps, historical archives.
+Weather, Air Quality & Pollen
+•	NOAA Weather API, Real time and forecasted weather, alerts.
+•	Open Meteo Air Quality & Pollen API, Pollution, pollen, UV index.
+•	WeatherAPI.com, Historical weather, astronomy data.
+Astronomy & Stargazing
+•	Open Meteo Astronomy API, Cloud cover, moon phases, visibility.
+•	NASA APOD, Daily astronomy images and explanations.
+Regional Planning & Maps
+•	Google Places API (optional), Local parks, trails, nature centers.
+•	USGS National Map, Trails, topography, land cover.
+Module List
+•	Core Modules
+o	Geolocation
+o	Data Orchestration
+o	Insight Engine
+•	Animal Watcher Modules
+o	Bird Data
+o	Wildlife Sightings
+o	Migration Calendar
+•	Weather and Events
+o	Weather Watch
+o	Air Quality & Pollen
+o	Historical Weather Data
+•	Astronomy Modules
+o	Stargazing Conditions
+o	Astronomy Events
+•	Adventure Planner
+o	Packing Recommendations
+o	Local Resources
+o	Printable Content
+•	User Interface
+o	Weather Card
+o	Bird Sightings
+o	Local Insights
+o	Navigation & Layout Structure
+o	Interactive CSS
+•	Utility Modules
+o	API Client
+o	Formatting Utilities
+o	Error Handling
+Graphic Identity
+•	Colors
+o	Wood (8c6545)
+o	Greenery (a3a380)
+o	Greenery Accent (c8d694)
+o	Primary Light (ebe7c9)
+o	Secondary Light (e2c6ac)
+o	Highlight (bb8588)
+•	Typography
+o	Body
+	Headings: Quicksand
+https://fonts.google.com/specimen/Quicksand 
+	Text: Quicksand
+https://fonts.google.com/specimen/Quicksand 
+o	Informational Cards
+	Headings: Roboto Condensed
+https://fonts.google.com/specimen/Roboto+Condensed 
+	Text: Merriweather
+https://fonts.google.com/specimen/Merriweather 
+•	Illustration / style
+o	Clean, organic, and tree-centric designs
+o	AI-Assisted SVG format. Will have to clean up the angles.
+ 
+Timeline
+-	Week 04
+o	Finalize wireframes
+o	Clean up Icon and styles
+o	Procure style primitives: Leaves, trees, mountains, weather, stars / planets
+-	Week 05
+o	Developing primary user experience
+	Design front page
+	Design adventure planner framework
+o	Establish API connections and fetch samples
+o	Lay down Accessibility groundwork
+-	Week 06
+o	Develop pipeline from API to user
+o	Develop responsive design
+o	Finalize informational pages
+-	Week 07
+o	Finalize Adventure planner
+o	Refine Responsive features
+o	Finalize accessibility features
+o	Perform final testing
+Project Planning
+A Trello board will include the following:
+(https://trello.com/b/Z99AOLCU/wdd-330-final-project-mjr) 
+•	Finalize Wireframes
+•	Developing primary user experience
+•	Establish API connections
+•	Finalize informational pages
+•	Finalize Adventure planner
+•	Finalize accessibility and responsive features
+•	Perform final testing
