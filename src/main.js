@@ -27,8 +27,8 @@ async function loadPartial(partialPath, elementId) {
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOMContentLoaded fired');
     loadCache();  // Load cache on app start
-    await loadPartial('/src/public/partials/header.html', 'partial-header');
-    await loadPartial('/src/public/partials/footer.html', 'partial-footer');
+    await loadPartial('/partials/header.html', 'partial-header');
+    await loadPartial('/partials/footer.html', 'partial-footer');
     
     initMenu();  // Initialize menu after partials load
     
