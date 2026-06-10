@@ -1,5 +1,5 @@
 // Component imports
-import { initMenu } from './components/Menu.js';
+import { initMenu } from './components/menu.js';
 
 // Core Module imports
 import { getUserLocation } from './core/Geolocation.js';
