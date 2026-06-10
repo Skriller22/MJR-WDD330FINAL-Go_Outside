@@ -1,0 +1,23 @@
+    <svg
+    viewBox="0 0 260 260"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <!-- Compass needle (north = green, south = red) -->
+    <!-- North needle -->
+    <polygon
+        points="130,55 145,130 130,140 115,130"
+        fill="#bb8588"
+        stroke="#8c6545"
+        stroke-width="3"
+        stroke-linejoin="round"
+    />
+
+    <!-- South needle -->
+    <polygon
+        points="130,205 145,130 130,120 115,130"
+        fill="#c8d694"
+        stroke="#8c6545"
+        stroke-width="3"
+        stroke-linejoin="round"
+    />
+</svg>
