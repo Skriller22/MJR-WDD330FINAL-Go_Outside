@@ -1,7 +1,7 @@
 import { fetchWeather } from '../modules/weatherEvents/WeatherWatch.js';
-import { fetchAirQuality } from '../modules/weatherEvents/airQuality.js';
-import { fetchStargazing } from '../modules/astronomy/stargazingConditions.js';
-import { fetchBirdSightings } from '../modules/animalWatcher/birdSightings.js';
+import { fetchAirQuality } from '../modules/weatherEvents/AirQuality.js';
+import { fetchStargazing } from '../modules/astronomy/StargazingConditions.js';
+import { fetchBirdSightings } from '../modules/animalWatcher/BirdSightings.js';
 
 // Cache for storing fetched data
 const cache = {

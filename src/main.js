@@ -1,5 +1,5 @@
 // Component imports
-import { initMenu } from './components/menu.js';
+import { initMenu } from './components/Menu.js';
 
 // Core Module imports
 import { getUserLocation } from './core/Geolocation.js';
@@ -7,8 +7,8 @@ import {loadCache, fetchWithCache, cache} from './core/cache.js';
 
 // Module imports
 import { fetchWeather } from './modules/weatherEvents/WeatherWatch.js';
-import { fetchAirQuality } from './modules/weatherEvents/airQuality.js';
-import { fetchStargazing } from './modules/astronomy/stargazingConditions.js';
+import { fetchAirQuality } from './modules/weatherEvents/AirQuality.js';
+import { fetchStargazing } from './modules/astronomy/StargazingConditions.js';
 
 // Load header and footer partials
 async function loadPartial(partialPath, elementId) {
