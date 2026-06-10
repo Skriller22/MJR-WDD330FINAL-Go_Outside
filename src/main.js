@@ -7,10 +7,16 @@ import {loadCache, fetchWithCache, cache} from './core/cache.js';
 import { setDebug } from './core/debug.js';
 import { loading } from './core/loading.js';
 
+
 // Module imports
 import { fetchWeather } from './modules/weatherEvents/WeatherWatch.js';
 import { fetchAirQuality } from './modules/weatherEvents/AirQuality.js';
 import { fetchStargazing } from './modules/astronomy/StargazingConditions.js';
+
+// Enable double-click to dismiss loading screen (safety feature)
+loading.addEventListener('click', () => {
+  console.log('Loading dismissed by user');
+});
 
 // Load header and footer partials
 async function loadPartial(partialPath, elementId) {
@@ -45,8 +51,10 @@ async function initializeApp() {
     }
     try {
         console.log('Getting user location...');
+        loading.show(); // Show loading indicator while getting location
         const location = await getUserLocation();
         console.log('Location:', location);
+        loading.hide(); // Hide loading indicator after location is obtained
         
         console.log('Checking cache...');
         // fetchWithCache will handle cache validation and fetching new data if needed. Ensures we don't make unnecessary API calls.
