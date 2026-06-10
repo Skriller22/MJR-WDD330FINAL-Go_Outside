@@ -1,4 +1,5 @@
 import { loading } from './loading.js';
+import { DEBUG_CONFIG } from './debug.js';
 import { fetchWeather } from '../modules/weatherEvents/WeatherWatch.js';
 import { fetchAirQuality } from '../modules/weatherEvents/AirQuality.js';
 import { fetchStargazing } from '../modules/astronomy/StargazingConditions.js';
@@ -32,6 +33,15 @@ function saveCache() {
 
 // Fetch limiter to prevent excessive API calls
 async function fetchWithCache(fetchFunction, lat, lon) {
+    if (DEBUG_CONFIG.skipApis) {
+        console.warn('API calls are skipped due to debug configuration.');
+        return {
+            weather: null,
+            airQuality: null,
+            stargazing: null,
+            birdSightings: null
+        };
+    }
     loading.show(); // Show loading indicator while fetching data
     const now = Date.now();
     // Check if we have valid cached data (within 12 hours) and it wasn't loaded manually

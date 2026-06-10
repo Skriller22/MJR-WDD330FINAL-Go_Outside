@@ -4,6 +4,8 @@ import { initMenu } from './components/menu.js';
 // Core Module imports
 import { getUserLocation } from './core/Geolocation.js';
 import {loadCache, fetchWithCache, cache} from './core/cache.js';
+import { setDebug } from './core/debug.js';
+import { loading } from './core/loading.js';
 
 // Module imports
 import { fetchWeather } from './modules/weatherEvents/WeatherWatch.js';
@@ -37,6 +39,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Initialize application
 async function initializeApp() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('debug')) {
+    setDebug({ enabled: true, skipApis: params.get('skipApis') === 'true' });
+    }
     try {
         console.log('Getting user location...');
         const location = await getUserLocation();
