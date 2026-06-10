@@ -1,3 +1,4 @@
+import { loading } from './loading.js';
 import { fetchWeather } from '../modules/weatherEvents/WeatherWatch.js';
 import { fetchAirQuality } from '../modules/weatherEvents/AirQuality.js';
 import { fetchStargazing } from '../modules/astronomy/StargazingConditions.js';
@@ -31,12 +32,14 @@ function saveCache() {
 
 // Fetch limiter to prevent excessive API calls
 async function fetchWithCache(fetchFunction, lat, lon) {
+    loading.show(); // Show loading indicator while fetching data
     const now = Date.now();
     // Check if we have valid cached data (within 12 hours) and it wasn't loaded manually
     if (cache.lastFetched && cache.location && cache.weather && cache.airQuality && cache.stargazing && cache.birdSightings && !cache.loadedManually) {
         const isSameLocation = cache.location.lat === lat && cache.location.lon === lon;
         const isCacheValid = (now - cache.lastFetched) < 12 * 60 * 60 * 1000; // 12 hours
         if (isSameLocation && isCacheValid) {
+            loading.hide(); // Hide loading indicator
             console.log('Using cached data');
             return {
                 weather: cache.weather,
@@ -63,7 +66,7 @@ async function fetchWithCache(fetchFunction, lat, lon) {
     cache.birdSightings = birdSightings;
     cache.loadedManually = false; // Reset manual load flag after fetching new data
     saveCache();
-
+    loading.hide(); // Hide loading indicator
     return { weather, airQuality, stargazing, birdSightings };
 }
 
