@@ -1,4 +1,4 @@
-@media (min-width: 600px) {
+@media (min-width: 1024px) {
     /* Footer Styles */
     footer {
         display: grid;
@@ -69,5 +69,20 @@
     
     .nav ul {
         display: flex;  /* Horizontal layout */
+    }
+
+    .forecast-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .forecast-card {
+        padding: 10px;
+        margin: 0 4px;
+        flex: 1; /* allows cards to grow and fill the space */
+        min-height: 80px;
+        min-width: 120px; /* ensures cards don't get too narrow on larger screens */
     }
 }

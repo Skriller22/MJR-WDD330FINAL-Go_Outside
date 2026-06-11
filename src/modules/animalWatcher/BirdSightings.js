@@ -24,6 +24,7 @@ async function fetchBirdSightings(lat, lon) {
     }
 }
 
+// Haversine formula to calculate distance between two lat/lng points
 function getDistanceFromLatLng(lat1, lon1, lat2, lon2) {
     const R = 3959; // Earth's radius in miles
     const dLat = (lat2 - lat1) * Math.PI / 180;

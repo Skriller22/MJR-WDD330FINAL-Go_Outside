@@ -96,7 +96,9 @@ function displaylastUpdated() {
             <p class="bold">Last Updated: ${lastUpdated}</p>
         </div>
     `;
-    mainContent.innerHTML += html;
+
+    // Location of this display information
+    // mainContent.innerHTML += html;
     console.log('Last updated displayed');
 }
 
@@ -113,7 +115,9 @@ function displayLocation(location) {
             <p>Longitude: ${location.lon}</p>
         </div>
     `;
-    mainContent.innerHTML += html;
+
+    // Location of this display information
+    // mainContent.innerHTML += html;
     console.log('Location displayed');
 }
 
@@ -133,7 +137,8 @@ function displayWeatherData(weather) {
         </div>
     `;
     
-    mainContent.innerHTML += html;
+    // Location of this display information
+    // mainContent.innerHTML += html;
     console.log('Weather displayed');
 }
 
@@ -151,8 +156,9 @@ function displayAirQuality(airQuality) {
             <p>AQI: ${airQuality.european_aqi}</p>
         </div>
     `;
-    
-    mainContent.innerHTML += html;
+
+    // Location of this display information
+    // mainContent.innerHTML += html;
     console.log('Air quality displayed');
 }
 
@@ -169,7 +175,8 @@ function displayStargazing(stargazing) {
             <p>Visibility: ${stargazing.visibility[0]}m</p>
         </div>
     `;
-    mainContent.innerHTML += html;
+    // Location of this display information
+    // mainContent.innerHTML += html;
 }
 
 async function displayBirdSightings(birdSightings) {
@@ -182,7 +189,7 @@ async function displayBirdSightings(birdSightings) {
     // Fetch images for each bird (in parallel with Promise.all)
     const birdsWithImages = await Promise.all(
         birdSightings.slice(0, 8).map(async (bird) => {
-            const imageUrl = await fetchBirdImage(bird.sciName);
+            const imageUrl = await fetchBirdImages(bird.sciName);
             return { ...bird, imageUrl };
         })
     );
@@ -204,8 +211,7 @@ async function displayBirdSightings(birdSightings) {
             ${birdCards}
         </div>
     `;
-    mainContent.innerHTML += html;
 }
 
 
-initializeApp();
+// initializeApp();
