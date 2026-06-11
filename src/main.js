@@ -11,6 +11,7 @@ import { loading } from './core/loading.js';
 import { fetchWeather } from './modules/weatherEvents/WeatherWatch.js';
 import { fetchAirQuality } from './modules/weatherEvents/AirQuality.js';
 import { fetchStargazing } from './modules/astronomy/StargazingConditions.js';
+import { fetchBirdImages } from './modules/animalWatcher/BirdImages.js';
 
 // Load header and footer partials
 async function loadPartial(partialPath, elementId) {
@@ -163,22 +164,32 @@ function displayStargazing(stargazing) {
     mainContent.innerHTML += html;
 }
 
-function displayBirdSightings(birdSightings) {
+async function displayBirdSightings(birdSightings) {
     if (!birdSightings || birdSightings.length === 0) {
         console.warn('No bird sightings data to display');
         return;
     }
     const mainContent = document.getElementById('home-content');
     
-    // Extract common names from each bird object
-    const birdCards = birdSightings.slice(0, 8).map(bird => `
+    // Fetch images for each bird (in parallel with Promise.all)
+    const birdsWithImages = await Promise.all(
+        birdSightings.slice(0, 8).map(async (bird) => {
+            const imageUrl = await fetchBirdImage(bird.sciName);
+            return { ...bird, imageUrl };
+        })
+    );
+    
+    // Create cards with images
+    const birdCards = birdsWithImages.map(bird => `
         <div class="bird-card">
+            ${bird.imageUrl ? `<img src="${bird.imageUrl}" alt="${bird.comName}" class="bird-image">` : ''}
             <h3>${bird.comName}</h3>
             <p><em>${bird.sciName}</em></p>
             <p>${bird.locName}</p>
             <p>${bird.obsDt}</p>
         </div>
     `).join('');
+    
     const html = `
         <div class="bird-sightings-display">
             <h2>Recent Bird Sightings <span class="italic">Within 30 Miles</span></h2>
