@@ -1,0 +1,70 @@
+    <svg
+    viewBox="0 0 260 260"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <!-- Outermost metallic ring -->
+    <circle cx="130" cy="130" r="120" fill="#8a8a8a" />
+
+    <!-- Light ring -->
+    <circle cx="130" cy="130" r="110" fill="#ebe7c9" />
+
+    <!-- Brown ring -->
+    <circle cx="130" cy="130" r="95" fill="#8c6545" />
+
+    <!-- Light ring -->
+    <circle cx="130" cy="130" r="85" fill="#ebe7c9" />
+
+    <!-- Light red ring -->
+    <circle cx="130" cy="130" r="65" fill="#e2c6ac" />
+
+    <!-- Inner light background (smaller now) -->
+    <circle cx="130" cy="130" r="55" fill="#ebe7c9" />
+
+    <!-- Directional notches rotated 45 degrees -->
+    <!-- NE -->
+    <rect
+        x="185"
+        y="45"
+        width="6"
+        height="18"
+        fill="#8c6545"
+        rx="2"
+        transform="rotate(40 194 48)"
+    />
+
+    <!-- SE -->
+    <rect
+        x="185"
+        y="202"
+        width="6"
+        height="18"
+        fill="#8c6545"
+        rx="2"
+        transform="rotate(139 193 208)"
+    />
+
+    <!-- NW -->
+    <rect
+        x="45"
+        y="52"
+        width="6"
+        height="18"
+        fill="#8c6545"
+        rx="2"
+        transform="rotate(-40 54 48)"
+    />
+
+    <!-- SW -->
+    <rect
+        x="45"
+        y="208"
+        width="6"
+        height="18"
+        fill="#8c6545"
+        rx="2"
+        transform="rotate(-138 54 208)"
+    />
+
+    <!-- Center circle -->
+    <circle cx="130" cy="130" r="8" fill="#8c6545" />
+</svg>

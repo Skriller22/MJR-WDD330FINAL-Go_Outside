@@ -33,6 +33,7 @@ function saveCache() {
 
 // Fetch limiter to prevent excessive API calls
 async function fetchWithCache(fetchFunction, lat, lon) {
+    // Debugging controls to skip API calls or use mock data
     if (DEBUG_CONFIG.skipApis) {
         console.warn('API calls are skipped due to debug configuration.');
         return {
@@ -45,7 +46,7 @@ async function fetchWithCache(fetchFunction, lat, lon) {
     loading.show(); // Show loading indicator while fetching data
     const now = Date.now();
     // Check if we have valid cached data (within 12 hours) and it wasn't loaded manually
-    if (cache.lastFetched && cache.location && cache.weather && cache.airQuality && cache.stargazing && cache.birdSightings && !cache.loadedManually) {
+    if (cache.lastFetched !== null && !cache.loadedManually) {
         const isSameLocation = cache.location.lat === lat && cache.location.lon === lon;
         const isCacheValid = (now - cache.lastFetched) < 12 * 60 * 60 * 1000; // 12 hours
         if (isSameLocation && isCacheValid) {

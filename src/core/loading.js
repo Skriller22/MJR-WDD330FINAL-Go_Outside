@@ -9,6 +9,28 @@ export const loading = {
   hide() {
     const element = document.getElementById('loading');
     if (element && !DEBUG) element.style.display = 'none';
+  },
+
+  addEventListener(event, callback) {
+    const element = document.getElementById('loading');
+    if (element) {
+      if (event === 'click') {
+        let clickCount = 0;
+        element.addEventListener('click', (e) => {
+          clickCount += 1;
+          if (callback) callback(e);
+
+          if (clickCount > 1) {
+            element.style.display = 'none';
+            clickCount = 0;
+          }
+        });
+      } else {
+        element.addEventListener(event, callback);
+      }
+    } else {
+      console.warn('Loading element not found for event listener:', event);
+    }
   }
 };
 
