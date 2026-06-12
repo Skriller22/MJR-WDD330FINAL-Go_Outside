@@ -1,3 +1,231 @@
 @media (min-width: 768px) {
+    :root {
+        --width-footer-logo: 185px; /* 155px + 30px padding */
+        --width-footer-padding: 15px;  /* 15px padding = 30px total */
+        --width-footer-logo-margin: 0;
+        --width-footer-logo-img: 155px;
+        --height-footer-logo: 100%;
+    }
+    
+    header {
+        position: sticky;
+        top: 0;
+    }
 
+    /* Today's Report */
+    .todays-report {
+        background-color: var(--color-secondary-highlight);
+        color: var(--color-primary-light);
+        padding: 4px 0;
+    }
+
+    .todays-report #home-todays-report-header {
+        padding: 8px 0 8px 4px;
+    }
+
+    .todays-report #bird-sightings-card {
+        grid-column: 1 / span 1;
+    }
+
+    .todays-report #air-quality-card {
+        grid-column: 2 / span 3;
+    }
+
+    .todays-report #weather-card {
+        grid-column: 1 / span 3;
+    }
+
+    .todays-report #astronomy-card {
+        grid-column: 4 / span 1;
+    }
+
+    .todays-report .report-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .todays-report .report-card-content,
+     .todays-report .report-card-content h2, 
+     .todays-report .report-card-content h3, 
+     .todays-report .report-card-content a,
+     .todays-report .report-card-content img {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .todays-report .report-card-content .image {
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+        object-fit: cover;
+    }
+
+    .todays-report .report-card-content img {
+        display: none;
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+        object-fit: cover;
+    }
+
+    .todays-report .report-card-content a {
+        background-size: cover;
+        background-position: center;
+    }
+
+    #bird-sightings-card a .image {
+        background-image: url("https://picsum.photos/seed/birds/1000/300");
+        background-size: cover;
+        background-position: center;
+    }
+
+    #air-quality-card a .image {
+        background-image: url("https://picsum.photos/seed/airquality/1000/300");
+        background-size: cover;
+        background-position: center;
+    }
+
+    #weather-card a .image {
+        background-image: url("https://picsum.photos/seed/weather/1000/300");
+        background-size: cover;
+        background-position: center;
+    }
+
+    #astronomy-card a .image {
+        background-image: url("https://picsum.photos/seed/astronomy/1000/300");
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Footer Styles */
+    footer {
+        position: relative;
+        display: grid;
+        grid-template-columns: var(--width-footer-logo) 3fr;
+        grid-template-rows: 0px 1fr 25px;
+        align-items: center;
+        border-top: 1px solid var(--color-greenery);
+    }
+
+    footer ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0;
+        gap: none;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    footer li {
+        text-align: center;
+        height: 100%;
+    }
+
+    footer li a {
+        display: block;
+    }
+
+    footer .logo {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    footer .logo-img {
+        display: block;
+        margin: var(--width-footer-padding);
+        width: var(--width-footer-logo-img);
+        max-width: var(--width-footer-logo);
+        height: var(--height-footer-logo);
+        object-fit: contain;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    footer ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    footer .footer-info {
+        display: flex;
+        flex-direction: row;
+        padding: 3px 15px;
+        justify-content: space-between;
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+
+    /* Ant March Animation */
+    footer #marching-ants {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 100%;
+        pointer-events: none; /* Allows clicks to pass through to footer links */
+        z-index: 9999;
+        grid-row: 1;
+        grid-column: 1 / span 2;
+        display: block; /* Show the loader on tablet and larger screens */
+    }
+    
+    .ant-loader {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        overflow: hidden;
+        z-index: 100;
+        transform: scaleX(-1); /* Flip the container to make ants march left to right */
+    }
+    
+    .ant {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('/images/ant.svg');
+        opacity: 0;
+        animation: 
+            march 30s linear infinite,
+            wiggle 0.1s ease-in-out infinite,
+            bob 0.4s ease-in-out infinite;
+    }
+    
+    /* Staggered delays for sequential appearance */
+    .ant:nth-child(1) { animation-delay: -26s, 0s, 0s; }
+    .ant:nth-child(2) { animation-delay: -7.5s, 0.05s, 0.02s; }
+    .ant:nth-child(3) { animation-delay: -15s, 0.1s, 0.04s; }
+    .ant:nth-child(4) { animation-delay: -20s, 0.15s, 0.06s; }
+    .ant:nth-child(5) { animation-delay: -2s, 0.2s, 0.08s; }
+    .ant:nth-child(6) { animation-delay: -0.1s, 0.25s, 0.1s; }
+
+    
+    @keyframes march {
+        0%   { right: -60px; opacity: 0; }
+        2%  { opacity: 1; }
+        98%  { opacity: 1; }
+        100% { right: 100%; opacity: 0; }
+    }
+    
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(1deg); }
+        25% { transform: rotate(100deg); }
+        75% { transform: rotate(-100deg); }
+    }
+    
+    @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1px); }
+    }
 }
+

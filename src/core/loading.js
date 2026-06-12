@@ -1,5 +1,5 @@
 // DEBUG flag controls whether the loading animation is visible.
-const DEBUG = false;
+const DEBUG = true;
 
 export const loading = {
   show() {
@@ -44,3 +44,18 @@ export async function withLoading(asyncFn) {
     loading.hide();
   }
 }
+
+// Another loading animation utility - show for individual module operations
+
+export async function loadModuleWithLoading(moduleName, asyncFn) {
+  console.log(`Loading ${moduleName}...`);
+  loading.show();
+  try {
+    return await asyncFn();
+  }
+  catch (error) {
+    console.error(`Error loading ${moduleName}:`, error);
+    throw error; // Re-throw to allow caller to handle it
+  }
+}
+

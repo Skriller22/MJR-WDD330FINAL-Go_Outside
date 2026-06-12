@@ -1,0 +1,36 @@
+<svg
+  width="200"
+  height="120"
+  viewBox="0 0 200 120"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="antTitle antDesc"
+>
+  <title id="antTitle">Simple ant illustration</title>
+  <desc id="antDesc">A minimal side-view ant with three body segments and six legs.</desc>
+
+  <!-- Body segments -->
+  <!-- Head -->
+  <circle cx="50" cy="60" r="10" fill="#222" />
+  <!-- Thorax -->
+  <circle cx="80" cy="60" r="12" fill="#222" />
+  <!-- Abdomen -->
+  <ellipse cx="120" cy="60" rx="18" ry="14" fill="#222" />
+
+  <!-- Antennae -->
+  <line x1="45" y1="53" x2="35" y2="40" stroke="#222" stroke-width="2" stroke-linecap="round" />
+  <line x1="55" y1="53" x2="65" y2="40" stroke="#222" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Legs (three on each side) -->
+  <!-- Front legs -->
+  <line x1="72" y1="66" x2="62" y2="80" stroke="#222" stroke-width="2" stroke-linecap="round" />
+  <line x1="72" y1="54" x2="62" y2="40" stroke="#222" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Middle legs -->
+  <line x1="88" y1="66" x2="78" y2="82" stroke="#222" stroke-width="2" stroke-linecap="round" />
+  <line x1="88" y1="54" x2="78" y2="38" stroke="#222" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Back legs -->
+  <line x1="104" y1="66" x2="96" y2="82" stroke="#222" stroke-width="2" stroke-linecap="round" />
+  <line x1="104" y1="54" x2="96" y2="38" stroke="#222" stroke-width="2" stroke-linecap="round" />
+</svg>

@@ -26,6 +26,7 @@ body {
 
 a {
     text-decoration: none;
+    color: var(--color-primary-light);
 }
 
 a:hover {
@@ -53,51 +54,52 @@ ul {
     margin-top: 10px;
 }
 
+/* Loading Spinner Styles */
 .loading-spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
 }
 
 .compass-loader {
-  position: relative;
-  width: 120px;
-  height: 120px;
+    position: relative;
+    width: 120px;
+    height: 120px;
 }
 
 .compass-bg {
-  width: 100%;
-  height: 100%;
-  animation: compass-spin 4s linear infinite;
+    width: 100%;
+    height: 100%;
+    animation: compass-spin 4s linear infinite;
 }
 
 .compass-spinner {
-  z-index: 200;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  animation: pointer-spin 2.4s linear infinite;
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    animation: pointer-spin 2.4s linear infinite;
 }
 
 @keyframes pointer-spin {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
 }
 
 .loading-spinner p {
-  color: white;
-  margin-top: 15px;
-  font-size: 18px;
+    color: white;
+    margin-top: 15px;
+    font-size: 18px;
 }
 
 
@@ -109,7 +111,6 @@ ul {
 
 header {
     z-index: 100;
-    position: sticky;
     top: 0;
     background-color: var(--color-greenery);
     color: var(--color-primary-light);
@@ -207,7 +208,7 @@ main {
 
     padding: 8px 12px;
     font-size: 1.5em;
-    background-color: rgba(163, 163, 128, 0.2);
+    background-color: rgba(163, 163, 128, 0.85);
     color: var(--color-secondary-highlight);
     border-radius: 16px;
     z-index: 2; /* ensures it sits above the image */
@@ -355,11 +356,12 @@ main {
 
 /* Footer Styles */
 footer {
+    border-top: 3px solid black;
     background-color: var(--color-wood);
     color: var(--color-primary-light);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
 }
 
 footer .logo-img {
@@ -386,6 +388,10 @@ footer li a {
     padding: 10px 0;
 }
 
+footer li:last-child a {
+    padding-bottom: 20px;
+}
+
 footer li a:hover {
     background-color: var(--color-greenery);
     color: var(--color-primary-light);
@@ -406,4 +412,58 @@ footer .footer-info {
 footer .footer-info p {
     text-align: center;
     margin: 6px 0;
+}
+
+/* Ant March Animation */
+footer #loading {
+    display: none; /* Hidden by default for mobile */
+}
+
+.ant-loader {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    z-index: 100;
+    transform: scaleX(-1); /* Flip the container to make ants march left to right */
+}
+
+.ant {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('/images/ant.svg');
+    opacity: 0;
+    animation: 
+        march 5s linear infinite,
+        wiggle 6s ease-in-out infinite,
+        bob 6s ease-in-out infinite;
+}
+
+/* Staggered delays for sequential appearance */
+.ant:nth-child(1) { animation-delay: 1.5s, 0s, 0s; }
+.ant:nth-child(2) { animation-delay: 7.5s, 0.05s, 0.02s; }
+.ant:nth-child(3) { animation-delay: 12s, 0.1s, 0.04s; }
+.ant:nth-child(4) { animation-delay: 15s, 0.15s, 0.06s; }
+.ant:nth-child(5) { animation-delay: 19.5s, 0.2s, 0.08s; }
+.ant:nth-child(6) { animation-delay: 30s, 0.25s, 0.1s; }
+
+@keyframes march {
+    0%   { right: -60px; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { right: 100%; opacity: 0; }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
 }
