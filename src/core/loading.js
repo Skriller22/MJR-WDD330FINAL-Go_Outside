@@ -1,5 +1,5 @@
 // DEBUG flag controls whether the loading animation is visible.
-const DEBUG = true;
+const DEBUG = false;
 
 export const loading = {
   show() {
