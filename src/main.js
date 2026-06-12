@@ -53,6 +53,7 @@ async function initializeApp() {
     try {
         console.log('Getting user location...');
         loading.show(); // Show loading indicator while getting location
+        // We should really ask for location permission before showing loading, but for now this will do. We can improve this flow later by showing a custom prompt before requesting geolocation.
         const location = await getUserLocation();
         console.log('Location:', location);
         loading.hide(); // Hide loading indicator after location is obtained
@@ -184,7 +185,7 @@ async function displayBirdSightings(birdSightings) {
         console.warn('No bird sightings data to display');
         return;
     }
-    const mainContent = document.getElementById('home-content');
+    const targetElement = document.getElementById('bird-sightings-display');
     
     // Fetch images for each bird (in parallel with Promise.all)
     const birdsWithImages = await Promise.all(
@@ -200,8 +201,8 @@ async function displayBirdSightings(birdSightings) {
             ${bird.imageUrl ? `<img src="${bird.imageUrl}" alt="${bird.comName}" class="bird-image">` : ''}
             <h3>${bird.comName}</h3>
             <p><em>${bird.sciName}</em></p>
-            <p>${bird.locName}</p>
-            <p>${bird.obsDt}</p>
+            <p class="bold">${bird.locName}</p>
+            <p class="italic justify-right">${bird.obsDt}</p>
         </div>
     `).join('');
     
@@ -211,7 +212,10 @@ async function displayBirdSightings(birdSightings) {
             ${birdCards}
         </div>
     `;
+
+    // Location of this display information
+    targetElement.innerHTML = html;
 }
 
 
-// initializeApp();
+initializeApp();

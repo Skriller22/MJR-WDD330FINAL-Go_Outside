@@ -47,6 +47,14 @@ ul {
     font-weight: bold;
 }
 
+.justify-right {
+    text-align: right;
+}
+
+.justify-left {
+    text-align: left;
+}
+
 .disclaimer {
     font-style: italic;
     font-size: 0.5em;
@@ -336,6 +344,20 @@ main {
 }
 
 /* Bird Card Styles */
+.bird-sightings {
+    background-color: var(--color-secondary-highlight);
+    color: var(--color-primary-light);
+    padding: 8px;
+}
+
+.bird-sightings-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .bird-card {
     background-color: var(--color-greenery);
     color: var(--color-primary-light);
