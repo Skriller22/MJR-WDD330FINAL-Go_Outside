@@ -1,7 +1,7 @@
-import { orchestrateData } from '/src/core/DataOrchestration.js';
-import { loadHeader } from '/src/components/header.js';
-import { loadFooter } from '/src/components/footer.js';
-import { initMenu } from '/src/components/menu.js';
+import { orchestrateData } from './src/core/DataOrchestration.js';
+import { loadHeader } from './src/components/header.js';
+import { loadFooter } from './src/components/footer.js';
+import { initMenu } from './src/components/menu.js';
 
 
 export async function loadPage() {
@@ -12,8 +12,8 @@ export async function loadPage() {
             <!-- Loading Spinner -->
             <div id="loading" class="loading-spinner" style="display: none;">
                 <div class="compass-loader">
-                    <img src="/src/public/images/logo-loading1.svg" class="compass-bg">
-                    <img src="/src/public/images/logo-loading2.svg" class="compass-spinner">
+                    <img src="/images/logo-loading1.svg" class="compass-bg">
+                    <img src="/images/logo-loading2.svg" class="compass-spinner">
                 </div>
                 <p>Loading...</p>
             </div>

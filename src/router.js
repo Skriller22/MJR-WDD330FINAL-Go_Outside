@@ -13,6 +13,6 @@ export function navigate(path) {
 export async function loadRoute(path) {
     const page = routes[path] || 'home';
 
-    const module = await import(`/src/pages/${page}.js`);
+    const module = await import(`../src/pages/${page}.js`);
     module.loadPage();
 }

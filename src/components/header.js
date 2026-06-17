@@ -3,7 +3,7 @@ export function loadHeader() {
         <header>
             <div class="logo">
                 <a href="/">
-                    <img class="logo-img" src="/src/images/logo.svg" alt="Go Outside Logo">
+                    <img class="logo-img" src="/images/logo.svg" alt="Go Outside Logo">
                 </a>
             </div>
 

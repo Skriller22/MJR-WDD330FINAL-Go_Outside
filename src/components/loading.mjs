@@ -4,8 +4,8 @@ export function initiateLoader() {
     loader.style.display = 'none'; // Initially hidden
     loader.innerHTML = 
         '<div class="compass-loader">\n' +
-        '    <img src="/src/images/logo-loading1.svg" class="compass-bg">\n' +
-        '    <img src="/src/images/logo-loading2.svg" class="compass-spinner">\n' +
+        '    <img src="/images/logo-loading1.svg" class="compass-bg">\n' +
+        '    <img src="/images/logo-loading2.svg" class="compass-spinner">\n' +
         '</div>\n' +
         '<p>Loading...</p>';
     loader.className = 'loading-spinner';
@@ -15,8 +15,8 @@ export function initiateLoader() {
 // Loader format to be injected into pages:
 //         <div id="loading" class="loading-spinner" style="display: none;">
 //             <div class="compass-loader">
-//                 <img src="/src/public/images/logo-loading1.svg" class="compass-bg">
-//                 <img src="/src/public/images/logo-loading2.svg" class="compass-spinner">
+//                 <img src="/images/logo-loading1.svg" class="compass-bg">
+//                 <img src="/images/logo-loading2.svg" class="compass-spinner">
 //             </div>
 //             <p>Loading...</p>
 //         </div>

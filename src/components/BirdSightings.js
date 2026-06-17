@@ -9,7 +9,7 @@ export function displayBird(bird) {
             <p class="sci-name">${bird.sciName}</p>
         </div>
         <div class="bird-image">
-            <img src="${bird.image || '/src/public/images/logo.svg'}" alt="${bird.comName}">
+            <img src="${bird.image || '/images/logo.svg'}" alt="${bird.comName}">
         </div>
         <div class="bird-details">
             <p>Seen at: ${bird.locName}</p>

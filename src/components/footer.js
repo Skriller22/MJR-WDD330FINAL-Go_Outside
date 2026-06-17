@@ -3,7 +3,7 @@ export function loadFooter() {
         <footer>
             <div class="logo">
                 <a href="/">
-                    <img src="/src/images/logo.svg" alt="Go Outside Logo" class="logo-img">
+                    <img src="/images/logo.svg" alt="Go Outside Logo" class="logo-img">
                 </a>
             </div>
             <!-- Footer Links -->

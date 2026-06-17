@@ -219,7 +219,7 @@ main {
     text-align: center;
     background: white; /* fallback if image fails */
 
-    background-image: url('/src/images/Yosemite-image.webp');
+    background-image: url('/images/Yosemite-image.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -493,7 +493,7 @@ footer #loading {
     height: 40px;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url('/src/images/ant.svg');
+    background-image: url('/images/ant.svg');
     opacity: 0;
     animation: 
         march 5s linear infinite,
