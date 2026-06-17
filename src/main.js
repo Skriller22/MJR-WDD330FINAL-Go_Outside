@@ -1,18 +1,18 @@
+// Main application entry point
+import { loadRoute } from './router.js';
+
 // Component imports
 import { initMenu } from './components/menu.js';
 
 // Core Module imports
 import { getUserLocation } from './core/Geolocation.js';
-import {loadCache, fetchWithCache, cache} from './core/cache.js';
+import {loadCache, refreshCache, cache} from './core/cache.js';
 import { setDebug } from './core/debug.js';
 import { loading } from './core/loading.js';
+import { orchestrateData } from './core/DataOrchestration.js';
+import { setupAlerts } from './core/alertController.js';
 
-
-// Module imports
-import { fetchWeather } from './modules/weatherEvents/WeatherWatch.js';
-import { fetchAirQuality } from './modules/weatherEvents/AirQuality.js';
-import { fetchStargazing } from './modules/astronomy/StargazingConditions.js';
-import { fetchBirdImages } from './modules/animalWatcher/BirdImages.js';
+// Module imports - empty for now
 
 // Enable double-click to dismiss loading screen (safety feature)
 loading.addEventListener('click', () => {
@@ -36,186 +36,73 @@ async function loadPartial(partialPath, elementId) {
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOMContentLoaded fired');
     loadCache();  // Load cache on app start
-    await loadPartial('/partials/header.html', 'partial-header');
-    await loadPartial('/partials/footer.html', 'partial-footer');
-    
-    initMenu();  // Initialize menu after partials load
     
     console.log('All partials loaded');
 });
 
+document.addEventListener('click', e => {
+    if (e.target.matches('[data-link]')) {
+        e.preventDefault();
+        navigate(e.target.href);
+    }
+});
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadRoute(window.location.pathname);
+    loadCache();
+});
+
+window.onpopstate = () => loadRoute(window.location.pathname);
+
 // Initialize application
 async function initializeApp() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('debug')) {
-    setDebug({ enabled: true, skipApis: params.get('skipApis') === 'true' });
+
+    const debug = params.get('debug') === 'true';
+    const skipApis = params.get('skipApis') === 'true';
+
+    setDebug({ enabled: debug, skipApis });
+
+    // Determine which APIs to call based on route
+    const page = window.location.pathname;
+
+    let apiCalls = {};
+
+    if (page.includes('animal-watch')) {
+        apiCalls = {
+            birdSightings: true,
+            birdImages: true
+        };
     }
+
+    if (page.includes('weather')) {
+        apiCalls = {
+            weather: true,
+            airQuality: true
+        };
+    }
+
+    if (page.includes('stargazing')) {
+        apiCalls = {
+            stargazing: true
+        };
+    }
+
     try {
-        console.log('Getting user location...');
-        loading.show(); // Show loading indicator while getting location
-        // We should really ask for location permission before showing loading, but for now this will do. We can improve this flow later by showing a custom prompt before requesting geolocation.
+        setupAlerts();
         const location = await getUserLocation();
-        console.log('Location:', location);
-        loading.hide(); // Hide loading indicator after location is obtained
-        
-        console.log('Checking cache...');
-        // fetchWithCache will handle cache validation and fetching new data if needed. Ensures we don't make unnecessary API calls.
-        const { weather, airQuality, stargazing, birdSightings } = await fetchWithCache(null, location.lat, location.lon);
-        console.log('Weather:', weather);
-        console.log('Air Quality:', airQuality);
-        console.log('Stargazing conditions:', stargazing);
-        console.log('Bird sightings:', birdSightings);
 
-        // Display last updated time
-        displaylastUpdated();
+        const data = await orchestrateData(debug, skipApis);
 
-        // Display location data
-        displayLocation(location);
-
-        // Display weather data
-        displayWeatherData(weather);
-
-        // Display air quality data
-        displayAirQuality(airQuality);
-
-        // Fetch and display stargazing conditions
-        displayStargazing(stargazing);
-
-        // Fetch and display bird sightings
-        displayBirdSightings(birdSightings);
+        // Route-based rendering
+        if (window.location.pathname.includes('bird-sightings')) {
+            loadBirdSightingsPage(data);
+        }
 
     } catch (error) {
         console.error('Error initializing app:', error);
     }
 }
-
-function displaylastUpdated() {
-    const mainContent = document.getElementById('home-content');
-    const lastUpdated = new Date(cache.lastFetched).toLocaleString();
-    const html = `
-        <div class="last-updated">
-            <p class="bold">Last Updated: ${lastUpdated}</p>
-        </div>
-    `;
-
-    // Location of this display information
-    // mainContent.innerHTML += html;
-    console.log('Last updated displayed');
-}
-
-function displayLocation(location) {
-    if (!location) {
-        console.warn('No location data to display');
-        return;
-    }
-    const mainContent = document.getElementById('home-content');
-    const html = `
-        <div class="location-display">
-            <h2>Your Location</h2>
-            <p>Latitude: ${location.lat}</p>
-            <p>Longitude: ${location.lon}</p>
-        </div>
-    `;
-
-    // Location of this display information
-    // mainContent.innerHTML += html;
-    console.log('Location displayed');
-}
-
-
-function displayWeatherData(weather) {
-    if (!weather) {
-        console.warn('No weather data to display');
-        return;
-    }
-    const mainContent = document.getElementById('home-content');
-    
-    const html = `
-        <div class="weather-display">
-            <h2>Current Weather</h2>
-            <p>Temperature: ${weather.temperature_2m}°C</p>
-            <p>Weather Code: ${weather.weather_code}</p>
-        </div>
-    `;
-    
-    // Location of this display information
-    // mainContent.innerHTML += html;
-    console.log('Weather displayed');
-}
-
-function displayAirQuality(airQuality) {
-    if (!airQuality) {
-        console.warn('No air quality data to display');
-        return;
-    }
-    const mainContent = document.getElementById('home-content');
-    const html = `
-        <div class="air-quality-display">
-            <h2>Air Quality</h2>
-            <p>PM2.5: ${airQuality.pm2_5}</p>
-            <p>PM10: ${airQuality.pm10}</p>
-            <p>AQI: ${airQuality.european_aqi}</p>
-        </div>
-    `;
-
-    // Location of this display information
-    // mainContent.innerHTML += html;
-    console.log('Air quality displayed');
-}
-
-function displayStargazing(stargazing) {
-    if (!stargazing) {
-        console.warn('No stargazing data to display');
-        return;
-    }
-    const mainContent = document.getElementById('home-content');
-    const html = `
-        <div class="stargazing-display">
-            <h2>Stargazing Conditions</h2>
-            <p>Cloud Cover: ${stargazing.cloud_cover[0]}%</p>
-            <p>Visibility: ${stargazing.visibility[0]}m</p>
-        </div>
-    `;
-    // Location of this display information
-    // mainContent.innerHTML += html;
-}
-
-async function displayBirdSightings(birdSightings) {
-    if (!birdSightings || birdSightings.length === 0) {
-        console.warn('No bird sightings data to display');
-        return;
-    }
-    const targetElement = document.getElementById('bird-sightings-display');
-    
-    // Fetch images for each bird (in parallel with Promise.all)
-    const birdsWithImages = await Promise.all(
-        birdSightings.slice(0, 8).map(async (bird) => {
-            const imageUrl = await fetchBirdImages(bird.sciName);
-            return { ...bird, imageUrl };
-        })
-    );
-    
-    // Create cards with images
-    const birdCards = birdsWithImages.map(bird => `
-        <div class="bird-card">
-            ${bird.imageUrl ? `<img src="${bird.imageUrl}" alt="${bird.comName}" class="bird-image">` : ''}
-            <h3>${bird.comName}</h3>
-            <p><em>${bird.sciName}</em></p>
-            <p class="bold">${bird.locName}</p>
-            <p class="italic justify-right">${bird.obsDt}</p>
-        </div>
-    `).join('');
-    
-    const html = `
-        <div class="bird-sightings-display">
-            <h2>Recent Bird Sightings <span class="italic">Within 30 Miles</span></h2>
-            ${birdCards}
-        </div>
-    `;
-
-    // Location of this display information
-    targetElement.innerHTML = html;
-}
-
 
 initializeApp();

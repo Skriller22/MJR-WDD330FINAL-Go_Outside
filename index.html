@@ -5,127 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Outside</title>
     <script type="module" src="/src/main.js"></script>
-    <link rel="stylesheet" href="../styles/base.css">
-    <link rel="stylesheet" href="../styles/tablet.css">
-    <link rel="stylesheet" href="../styles/desktop.css">
+    <link rel="icon" href="/src/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/tablet.css">
+    <link rel="stylesheet" href="/src/styles/desktop.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Roboto+Condensed:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="partial-header"></header>
-
-    <main id="home-content">
-        <!-- Loading Spinner -->
-        <div id="loading" class="loading-spinner" style="display: none;">
-            <div class="compass-loader">
-                <img src="../images/logo-loading1.svg" class="compass-bg">
-                <img src="../images/logo-loading2.svg" class="compass-spinner">
-            </div>
-            <p>Loading...</p>
-        </div>
-
-        <!-- Start of Main Content -->
-        <section class="hero" id="home-hero">
-            <div class="hero-content">
-                <div class="welcome-message">
-                    <h2>Welcome explorer!</h2>
-                    <p>Discover the great outdoors with our personalized recommendations based on your location and real-time conditions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Home Banner -->
-        <section class="banner-section" id="home-banner">
-            <div class="banner-card" id="animal-watch-card">
-                <a href="/pages/animal-watch.html">
-                    <h3>Animal Watch</h3>
-                </a>
-            </div>
-            <div class="banner-card" id="weather-watch-card">
-                <a href="/pages/weather-watch.html">
-                    <h3>Weather Watch</h3>
-                </a>
-            </div>
-            <div class="banner-card" id="celestial-watch-card">
-                <a href="/pages/celestial-watch.html">
-                    <h3>Celestial Events</h3>
-                </a>
-            </div>
-        </section>
-
-        <!-- Select Location Banner -->
-        <section class="banner-section" id="select-location-banner">
-            <div class="banner-card" id="select-location-card">
-                <h3>Select Location</h3>
-                <p>Choose a location to get personalized outdoor recommendations based on real-time conditions.</p>
-                <p class="disclaimer">*Location selection is currently under development.</p>
-            </div>
-        </section>
-
-        <!-- 7-Day Weather Report -->
-        <section class="weather-forecast" id="home-weather-forecast">
-            <div class="forecast-header" id="home-weather-forecast-header">
-                <h2>7-Day Weather Forecast</h2>
-            </div>
-            <div class="forecast-content" id="home-weather-forecast-content">
-                <!-- 7-Day Weather Cards will be dynamically inserted here -->
-                <div class="forecast-card" id="forecast-today"></div>
-                <div class="forecast-card" id="forecast-day-1"></div>
-                <div class="forecast-card" id="forecast-day-2"></div>
-                <div class="forecast-card" id="forecast-day-3"></div>
-                <div class="forecast-card" id="forecast-day-4"></div>
-                <div class="forecast-card" id="forecast-day-5"></div>
-                <div class="forecast-card" id="forecast-day-6"></div>
-            </div>
-        </section>
-
-        <!-- Today's Report -->
-        <section class="todays-report" id="home-todays-report">
-            <div class="report-header" id="home-todays-report-header">
-                <h2>Today's Report</h2>
-            </div>
-            <div class="report-content" id="home-todays-report-content">
-                <div class="report-card-content" id="bird-sightings-card">
-                    <a href="/pages/animal-watch.html">
-                        <h3>Bird Sightings</h3>
-                        <!-- This is not good design but it will do for now -->
-                        <img src="../images/bird-sighting.jpg" alt="Latest Bird Sighting" class="report-card-img">
-                        <div class="image"></div>
-                        <h2>Latest Bird Sighting</h2>
-                    </a>
-                </div>
-                <div class="report-card-content" id="air-quality-card">
-                    <a href="/pages/air-quality.html">
-                        <h3>Air Quality</h3>
-                        <!-- This is not good design but it will do for now -->
-                        <img src="../images/air-quality.jpg" alt="Current Air Quality" class="report-card-img">
-                        <div class="image"></div>
-                        <h2>Today's Air Quality Report</h2>
-                    </a>
-                </div>
-                <div class="report-card-content" id="weather-card">
-                    <a href="/pages/weather-watch.html">
-                        <h3>Weather</h3>
-                        <!-- This is not good design but it will do for now -->
-                        <img src="../images/weather.jpg" alt="Current Weather" class="report-card-img">
-                        <div class="image"></div>
-                        <h2>Today's Weather Report</h2>
-                    </a>
-                </div>
-                <div class="report-card-content" id="astronomy-card">
-                    <a href="/pages/celestial-watch.html">
-                        <h3>Astronomy</h3>
-                        <!-- This is not good design but it will do for now -->
-                        <img src="../images/astronomy.jpg" alt="Current Astronomy Report" class="report-card-img">
-                        <div class="image"></div> 
-                        <h2>Next Celestial Event</h2>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="partial-footer"></footer>
+    <div id="app"></div>
 </body>
 </html>

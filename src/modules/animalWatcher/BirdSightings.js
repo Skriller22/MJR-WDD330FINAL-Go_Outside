@@ -1,5 +1,5 @@
 // Bird Data Module
-async function fetchBirdSightings(lat, lon) {
+async function fetchBirdSightings(lat, lon, radius = 30) {
     try {
         const apiKey = import.meta.env.VITE_EBIRD_API_KEY;
         const url = `https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${lon}&key=${apiKey}&back=7`;

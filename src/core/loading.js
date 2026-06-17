@@ -1,6 +1,13 @@
 // DEBUG flag controls whether the loading animation is visible.
 const DEBUG = false;
 
+import { initiateLoader } from '../components/loading.mjs';
+
+// Initialize the loading element on page load
+document.addEventListener('DOMContentLoaded', () => {
+  initiateLoader();
+});
+
 export const loading = {
   show() {
     const element = document.getElementById('loading');
