@@ -1,9 +1,9 @@
-import { withLoading } from './src/core/loading.js';
-import { loadHeader } from './src/components/header.js';
-import { loadFooter } from './src/components/footer.js';
-import { initMenu } from './src/components/menu.js';
-import { orchestrateData } from './src/core/DataOrchestration.js';
-import { loadBirdSightingsPage } from './src/core/controllers/birdSightingsController.js';
+import { withLoading } from '../core/loading.js';
+import { loadHeader } from '../components/header.js';
+import { loadFooter } from '../components/footer.js';
+import { initMenu } from '../components/menu.js';
+import { orchestrateData } from '../core/DataOrchestration.js';
+import { loadBirdSightingsPage } from '../core/controllers/birdSightingsController.js';
 
 export async function loadPage() {
     document.querySelector('#app').innerHTML = `

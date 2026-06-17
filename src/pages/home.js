@@ -1,7 +1,7 @@
-import { orchestrateData } from './src/core/DataOrchestration.js';
-import { loadHeader } from './src/components/header.js';
-import { loadFooter } from './src/components/footer.js';
-import { initMenu } from './src/components/menu.js';
+import { orchestrateData } from '../core/DataOrchestration.js';
+import { loadHeader } from '../components/header.js';
+import { loadFooter } from '../components/footer.js';
+import { initMenu } from '../components/menu.js';
 
 
 export async function loadPage() {
