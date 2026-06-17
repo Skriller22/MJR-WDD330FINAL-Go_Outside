@@ -1,5 +1,5 @@
-import { displayBird } from './src/components/BirdSightings.js';
-import { getBirdImage } from './src/core/cache.js';
+import { displayBird } from '../../components/BirdSightings.js';
+import { getBirdImage } from '../cache.js';
 
 export async function loadBirdSightingsPage(data) {
     const container = document.querySelector('#bird-sightings-display');
